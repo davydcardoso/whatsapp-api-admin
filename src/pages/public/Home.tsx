@@ -115,13 +115,13 @@ export const Home: React.FC = () => {
             </Text>
 
             <Text fontSize={"sm"} mt={"10px"} textAlign={"center"}>
-              Acesse nossa documentação. {" "}
+              Acesse nossa documentação.{"  "}
               <a
                 href="http://wadoc.rocketapps.dev/"
                 target="_blank"
                 rel="noreferrer"
               >
-                Clique aqui!
+                <b>Clique aqui!</b>
               </a>
             </Text>
           </Grid>
@@ -149,7 +149,7 @@ export const Home: React.FC = () => {
               <FormHelperText>
                 Ainda não possui um token?{" "}
                 <a href={"/register"} target={"_self"}>
-                  clique aqui!
+                  <b>Clique aqui!</b>
                 </a>
               </FormHelperText>
             </FormControl>
@@ -164,7 +164,7 @@ export const Home: React.FC = () => {
             <Button
               w={"120px"}
               disabled={loading}
-              colorScheme="blue"
+              colorScheme="green"
               onClick={() => handleStartSessionWhatsapp()}
             >
               {loading ? (

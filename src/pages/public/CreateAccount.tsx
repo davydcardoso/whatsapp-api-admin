@@ -90,7 +90,7 @@ export const CreateAccount: React.FC = () => {
             <FormHelperText mt={"20px"}>
               Já possui conta?{" "}
               <a href={"/"} target={"_self"}>
-                Login!
+                <b>Login!</b>
               </a>
             </FormHelperText>
           </FormControl>
@@ -105,7 +105,7 @@ export const CreateAccount: React.FC = () => {
           <Button
             w={"100px"}
             disabled={loading}
-            colorScheme="blue"
+            colorScheme="green"
             onClick={() => handleCreateAccount()}
           >
             {loading ? (
