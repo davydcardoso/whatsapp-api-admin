@@ -113,6 +113,17 @@ export const Home: React.FC = () => {
               Com nossa api você poderá enviar e receber mensagem através do
               WhatsApp sem nenhuma dificuldade
             </Text>
+
+            <Text fontSize={"sm"} mt={"10px"} textAlign={"center"}>
+              Acesse nossa documentação. {" "}
+              <a
+                href="http://wadoc.rocketapps.dev/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Clique aqui!
+              </a>
+            </Text>
           </Grid>
 
           <Grid w={"80%"}>
