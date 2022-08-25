@@ -70,7 +70,13 @@ export const useWhatsAppHook = () => {
         if (axiosError.response) {
           const data = axiosError.response.data as ErrorResponse;
 
-          console.log(axiosError.status, axiosError.response);
+          if (!data.error) {
+            toast.error(
+              "Houve um erro ao tentar conexão com nossos servidores, por favor entre em contato com o Desenvolvedor"
+            );
+
+            return;
+          }
 
           toast.error(data.error);
 
@@ -122,7 +128,13 @@ export const useWhatsAppHook = () => {
       if (axiosError.response) {
         const data = axiosError.response.data as ErrorResponse;
 
-        console.log(axiosError.status, axiosError.response);
+        if (!data.error) {
+          toast.error(
+            "Houve um erro ao tentar conexão com nossos servidores, por favor entre em contato com o Desenvolvedor"
+          );
+
+          return;
+        }
 
         toast.error(data.error);
 
@@ -153,7 +165,13 @@ export const useWhatsAppHook = () => {
       if (axiosError.response) {
         const data = axiosError.response.data as ErrorResponse;
 
-        console.log(axiosError.status, axiosError.response);
+        if (!data.error) {
+          toast.error(
+            "Houve um erro ao tentar conexão com nossos servidores, por favor entre em contato com o Desenvolvedor"
+          );
+
+          return;
+        }
 
         toast.error(data.error);
 
