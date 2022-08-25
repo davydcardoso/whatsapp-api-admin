@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BiPaste } from "react-icons/bi";
+import { AiOutlineQrcode } from "react-icons/ai";
 import {
   Grid,
   Spinner,
@@ -44,19 +45,13 @@ export const Home: React.FC = () => {
 
     localStorage.setItem("@waapi:token", companyToken);
 
-    await getSessionWhatsApp(companyToken);
-
-    const timeoutFunction = setTimeout(async () => {
-      await getSessionWhatsApp(companyToken);
-    }, 30000);
-
-    if (sessionAuthenticated) {
-      clearTimeout(timeoutFunction);
-    }
-
     if (!sessionAuthenticated) {
       await startSessionWhatsApp(companyToken);
     }
+  }
+
+  async function handleGetQrCodeWhatsapp() {
+    await getSessionWhatsApp(companyToken);
   }
 
   function handleCopyText() {
@@ -192,34 +187,67 @@ export const Home: React.FC = () => {
 
           <Grid w={"80%"} mt={"30px"} display={"flex"} flexDirection={"column"}>
             <Text fontSize={"xs"} textAlign={"center"}>
-              Versão: v0.0.1 - Atualização 23/08/2022
+              Versão: v<b>{process.env.REACT_APP_FRONTEND_VERSION || "Beta"}</b>{" "}
+              - Atualização 23/08/2022 às 14:29
             </Text>
           </Grid>
         </Grid>
 
-        <Square
-          size={"330px"}
+        <Grid
+          p={"20px"}
+          h={"100%"}
           display={"flex"}
           flexDirection={"column"}
           alignItems={"center"}
-          justifyContent={"center"}
-          boxShadow={"base"}
-          borderRadius={"10px"}
         >
-          {!qrcode ? (
-            <Image src={require("../../assets/images/Whatsapp_37229.png")} />
-          ) : loading ? (
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="rgb(43, 108, 176)"
-              size="xl"
-            />
-          ) : (
-            <QRCode size={256} value={qrcode} />
-          )}
-        </Square>
+          <Grid
+            w={"100%"}
+            h={"40px"}
+            mt={"20px"}
+            mb={"20px"}
+            borderRadius={"10px"}
+            backgroundColor={"rgb(45, 184, 67)"}
+            display={"flex"}
+            flexDirection={"row"}
+            alignItems={"center"}
+            justifyContent={"center"}
+          >
+            <Text fontSize={"md"} color={"white"}>
+              Escaneie o qrcode
+            </Text>
+            <Button
+              onClick={() => handleGetQrCodeWhatsapp()}
+              colorScheme="wite"
+              variant="solid"
+            >
+              <AiOutlineQrcode size={30} />
+            </Button>
+          </Grid>
+
+          <Square
+            size={"330px"}
+            display={"flex"}
+            flexDirection={"column"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            boxShadow={"base"}
+            borderRadius={"10px"}
+          >
+            {!qrcode ? (
+              <Image src={require("../../assets/images/Whatsapp_37229.png")} />
+            ) : loading ? (
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="rgb(43, 108, 176)"
+                size="xl"
+              />
+            ) : (
+              <QRCode size={256} value={qrcode} />
+            )}
+          </Square>
+        </Grid>
       </Grid>
     </Grid>
   );
